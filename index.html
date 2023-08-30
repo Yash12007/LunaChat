@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LunaChat</title>
+    <link rel="icon" href="https://icons.getbootstrap.com/assets/icons/chat-left.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+    body{
+        background: black;
+        color: white;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        animation: 0.5s slow-visible;
+    }
+    #load{
+        background-image: linear-gradient(to right, cyan, blue);
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        top: 55px;
+        left: 0;
+        animation: 0.5s loading;
+    }
+    #bottom{
+        background-image: linear-gradient(to right, cyan, blue);
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        animation: 0.5s loading;
+    }
+    #main{
+        position: absolute;
+        top: 58px;
+        left: 0;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        height: 500px;
+    }
+    #bottom-sec{
+        height: 50px;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        background: black;
+        display: grid;
+        place-items: center;
+    }
+    button{
+        background: black;
+        color: white;
+        border-width: 0;
+        border-color: none;
+        border-radius: 10px;
+        height: fit-content;
+        width: fit-content;
+    }
+    .offcanvas{
+        background: black;
+        color: white;
+    }
+    #add-friend{
+        position: absolute;
+        top: 60px;
+        right: 10px;
+    }
+    #view-profile{
+        position: absolute;
+        top: -50000px;
+        left: -50000px;
+        width: 80%;
+        height: 80%;
+        border-radius: 10px;
+        background: black;
+        color: white;
+        opacity: 0.7;
+        border-color: white;
+        border-width: 1px;
+    }
+    #stories{
+        position: absolute;
+        top: -50000px;
+        left: -50000px;
+        width: 80%;
+        height: 80%;
+        border-radius: 10px;
+        background: black;
+        color: white;
+        opacity: 0.7;
+        border-color: white;
+        border-width: 1px;
+    }
+    #main{
+        animation: 1s slow-visible;
+    }
+    @keyframes loading {
+        0%{
+            width: 0%;
+        }
+        10%{
+            width: 10%;
+        }
+        20%{
+            width: 20%;
+        }
+        30%{
+            width: 30%;
+        }
+        40%{
+           width: 40%; 
+        }
+        50%{
+            width: 50%;
+        }
+        60%{
+            width: 60%;
+        }
+        70%{
+            width: 70%;
+        }
+        80%{
+            width: 80%;
+        }
+        90%{
+            width: 90%;
+        }
+        100%{
+            width: 100%;
+        }
+    }
+    @keyframes slow-visible {
+        0%{
+            opacity: 0;
+        }
+        10%{
+            opacity: 0.1;
+        }
+        20%{
+            opacity: 0.2;
+        }
+        30%{
+            opacity: 0.3;
+        }
+        40%{
+            opacity: 0.4;
+        }
+        50%{
+            opacity: 0.5;
+        }
+        60%{
+            opacity: 0.6;
+        }
+        70%{
+            opacity: 0.7;
+        }
+        80%{
+            opacity: 0.8;
+        }
+        90%{
+            opacity: 0.9;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+  </style>
+  <body>
+    <div id="main">
+        <div>
+            <h1 style="font-family: 'Dancing Script', cursive;">LunaChat</h1>
+            <p>&copy; 2023 Yash12007, All rights reserved.</p>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="" style="font-family: 'Dancing Script', cursive;">
+            LunaChat
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" href="https://yash12007.github.io">Home</a>
+              <a class="nav-link active" href="https://yash12007.github.io/Max#about">About</a>
+              <a class="nav-link active" href="https://yash12007.github.io/Max#services">Services</a>
+              <a class="nav-link active" href="https://yash12007.github.io/Max/contact.html">Contact</a>
+              <a class="nav-link active" href="https://yash12007.github.io/Max#privacy-policy">Privacy policy</a>
+            </div>
+          </div>
+        </div>
+    </nav>
+    <div id="load"></div>
+    <div id="bottom"></div>
+    <div id="bottom-sec">
+        <div>
+            <button onclick="map()">
+                <i class="bi bi-geo-alt"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+            </button>
+            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                <i class="bi bi-chat-left"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
+                    <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                </svg>
+            </button>
+            <button id="camera">
+                <i class="bi bi-camera"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                    <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                    <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                </svg>
+            </button>
+            <button onclick="stories()">
+                <i class="bi bi-people-fill"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                </svg>
+            </button>
+            <button onclick="profile()" id="profile">
+                <i class="bi bi-person-circle"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>                
+            </button>
+        </div>
+    </div>
+    <div id="add-friend">
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+            <i class="bi bi-person-plus"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+        </button>
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: none; color: white; border-width: 0; border-color: none;">Menu</button>
+            <ul class="dropdown-menu" style="cursor: pointer;">
+              <p onclick="signInWithGoogle()">Sign In with Google</p>
+              <p onclick="signInWithGoogle()">Switch account</p>
+              <p onclick="cleardata()">Clear data</p>
+            </ul>
+          </div>
+    </div>
+    <!--Add friend-->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Add friend</h5>
+        <button type="button" data-bs-dismiss="offcanvas">X</button>
+    </div>
+    <div class="offcanvas-body">
+        <p>Find friends by searching name, username, number or email</p>
+    </div>
+    </div>
+    <!--Chat-->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Chat</h5>
+          <button type="button" data-bs-dismiss="offcanvas">X</button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            Select a chat to continue
+          </div>
+        </div>
+    </div>
+    <!--Stories-->
+    <div id="stories"></div>
+    <div id="view-profile"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+  <script>
+    function signInWithGoogle() {
+        const datetime = Date();
+        // Using a third-party API to get IP address
+        fetch('https://api64.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            const ipAddress = data.ip;
+            localStorage.setItem('IP', ipAddress);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        localStorage.setItem('Signup-date', datetime);
+        const clientId = '364524252352-mueplfnejbmn0jupc9ut4j7kdsf7md8s.apps.googleusercontent.com';
+        const redirectUri = 'https://yash12007.github.io/';
+        const googleSignInUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=email%20profile`;
+        window.open(googleSignInUrl, '_self');
+    }
+    // Function to fetch user information from Google API
+    function getUserInfo(accessToken) {
+        const userInfoUrl = `https://www.googleapis.com/oauth2/v2/userinfo?access_token=${accessToken}`;
+        try{
+            localStorage.setItem('account', userInfoUrl);
+        } catch(e){
+            alert('Error while add account in your device');
+        }
+        fetch(userInfoUrl)
+            .then(response => response.json())
+            
+            .then(data => {
+                // Update the user-info element with user account information
+                const userInfoElement = document.getElementById('user-info');
+                userInfoElement.innerHTML = `
+                    <img src='${data.picture}' alt='Profile Picture' width='30' height='30' style='border-radius: 50%; margin-right: 5px;'>
+                    Welcome, ${data.name}
+                `;
+            })
+            .catch(error => console.error('Error fetching user information:', error));
+    }
+    // Function to handle the redirect after successful sign-in with Google
+    function handleGoogleSignIn() {
+        const urlParams = new URLSearchParams(window.location.hash.substr(1));
+        const accessToken = urlParams.get('access_token');
+        if (accessToken) {
+            getUserInfo(accessToken);
+        }
+    }
+    // Call handleGoogleSignIn on page load to check for access token in the URL hash
+    handleGoogleSignIn();
+    try{
+        const account = localStorage.getItem('account');
+        if (account == null){
+            console.log('No account founded');
+        }else{
+            fetch(account)
+            .then(response => response.json())
+            .then(data => {
+                const userInfoElement = document.getElementById('profile');
+                userInfoElement.innerHTML = `
+                    <img src='${data.picture}' alt='user' width='30' height='30' style='border-radius: 50%; margin-right: 5px;'>
+                `;
+            })
+            .catch(error => console.error('Error fetching user information:', error));
+        }
+    } catch(error){
+        console.log(error);
+    }
+    function map(){
+        document.getElementById("main").innerHTML=`
+        <div style="width: 100%">
+            <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=+(Yash12007)&amp;t=k&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                <a href="https://www.maps.ie/population/">Population Estimator map</a>
+            </iframe>
+        </div>
+        `;
+    }
+    document.getElementById("camera").addEventListener("click", openCamera);
+
+    let mediaRecorder; // Global variable to hold the MediaRecorder object
+    let chunks = [];   // Array to store video chunks
+
+    function openCamera() {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                var videoElement = document.createElement("video");
+                videoElement.srcObject = stream;
+                videoElement.setAttribute("autoplay", "");
+                videoElement.setAttribute("playsinline", "");
+                videoElement.style.width = "100%";
+                videoElement.style.height = "auto";
+
+                // Create capture buttons
+                var captureImageBtn = document.createElement("button");
+                var captureVideoBtn = document.createElement("button");
+
+                captureImageBtn.innerHTML = `
+                <i class="bi bi-camera"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                    <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                    <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                </svg>
+                `;
+                captureVideoBtn.innerHTML = `
+                <i class="bi bi-camera-video"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"/>
+                </svg>
+                `;
+                captureImageBtn.style = 'position:absolute; left:10px; bottom:60px;';
+                captureVideoBtn.style = 'position:absolute; left:50px; bottom:60px;';
+                captureImageBtn.addEventListener("click", function () {
+                    captureImage(stream);
+                });
+                captureVideoBtn.addEventListener("mousedown", function () {
+                    startRecording(stream);
+                });
+                captureVideoBtn.addEventListener("mouseup", function () {
+                    stopRecording();
+                });
+
+                // Replace the content of the #main div with the video element and buttons
+                var mainDiv = document.getElementById("main");
+                mainDiv.innerHTML = "";
+                mainDiv.appendChild(videoElement);
+                mainDiv.appendChild(captureImageBtn);
+                mainDiv.appendChild(captureVideoBtn);
+            })
+            .catch(function (error) {
+                console.error("Error accessing the camera:", error);
+            });
+    }
+
+    function captureImage(stream) {
+        var videoTrack = stream.getVideoTracks()[0];
+        var imageCapture = new ImageCapture(videoTrack);
+
+        imageCapture.takePhoto()
+            .then(function (blob) {
+                var imageElement = document.createElement("img");
+                imageElement.src = URL.createObjectURL(blob);
+                imageElement.style.maxWidth = "100%";
+                imageElement.style.height = "auto";
+
+                var previewDiv = document.createElement("div");
+                previewDiv.appendChild(imageElement);
+
+                var saveBtn = document.createElement("button");
+                saveBtn.innerHTML = `
+                <i class="bi bi-arrow-down-circle"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                </svg>
+                <b>Save</b>
+                `;
+                saveBtn.style='font-size:14px;';
+
+                saveBtn.addEventListener("click", function () {
+                    // Implement saving logic here
+                });
+
+                previewDiv.appendChild(saveBtn);
+
+                var mainDiv = document.getElementById("main");
+                mainDiv.innerHTML = "";
+                mainDiv.appendChild(previewDiv);
+            })
+            .catch(function (error) {
+                console.error("Error capturing image:", error);
+            });
+    }
+
+    function startRecording(stream) {
+        chunks = [];
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = function (event) {
+            if (event.data.size > 0) {
+                chunks.push(event.data);
+            }
+        };
+
+        mediaRecorder.start();
+    }
+
+    function stopRecording() {
+        mediaRecorder.stop();
+
+        mediaRecorder.onstop = function () {
+            var videoElement = document.createElement("video");
+            videoElement.controls = false;
+            videoElement.autoplay = true;
+            var videoBlob = new Blob(chunks, { type: "video/webm" });
+            videoElement.src = URL.createObjectURL(videoBlob);
+
+            var previewDiv = document.createElement("div");
+            previewDiv.appendChild(videoElement);
+
+            var saveBtn = document.createElement("button");
+            saveBtn.innerHTML = `
+            <i class="bi bi-arrow-down-circle"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+            </svg>
+            <b>Save</b>
+            `;
+            saveBtn.style='font-size:14px;';
+            
+            saveBtn.addEventListener("click", function () {
+                // Implement saving logic here
+            });
+
+            previewDiv.appendChild(saveBtn);
+
+            var mainDiv = document.getElementById("main");
+            mainDiv.innerHTML = "";
+            mainDiv.appendChild(previewDiv);
+        };
+    }
+    function profile(){
+        var profile = document.getElementById('view-profile');
+        profile.setAttribute('style', 'top:10%; left:10%;');
+        try{
+            const account = localStorage.getItem('account');
+            if (account == null){
+                console.log('No account founded');
+                profile.innerHTML='Account not found!<br><button onclick="closeinfo()">close</button>';
+            }else{
+                fetch(account)
+                .then(response => response.json())
+                .then(data => {
+                    profile.innerHTML=`
+                    <img src='${data.picture}' alt='Profile Picture' width='30' height='30' style='border-radius: 50%; margin-right: 5px;'> ${data.name}
+                    <br>
+                    Email: ${data.email}
+                    <br>
+                    Last login date: ${localStorage.getItem('Signup-date')}
+                    <br>
+                    IP address: ${localStorage.getItem('IP')}
+                    <br>
+                    Location: ${localStorage.getItem('loc')}
+                    <br>
+                    <button onclick='closeinfo()'>Close</button>
+                    `;
+                }).catch(error => profile.innerHTML='Error fetching user information:', error);
+            }
+        } catch(e){
+            console.log('Account not found');
+            const url = window.location.href;
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                profile.innerHTML=`
+                <img src='${data.picture}' alt='Profile Picture' width='30' height='30' style='border-radius: 50%; margin-right: 5px;'> ${data.name}
+                <br>
+                Email: ${data.email}
+                <br>
+                Last login date: ${localStorage.getItem('Signup-date')}
+                <br>
+                IP address: ${localStorage.getItem('IP')}
+                <br>
+                Location: ${localStorage.getItem('loc')}
+                <br>
+                <button onclick='closeinfo()'>Close</button>
+                `;
+            }).catch(error => profile.innerHTML='Error fetching user information:', error);
+        }
+    }
+    function closeinfo(){
+        document.getElementById('view-profile').setAttribute('style', 'top:-50000px; left:-50000px;');   
+    }
+    function cleardata(){
+        localStorage.clear();
+    }
+    function stories(){
+        var story = document.getElementById('stories');
+        story.setAttribute('style', 'top:10%; left:10%;');
+        story.innerHTML=`
+        <h3>Stories</h3>
+        <p>You & your friend's stories will apear here.</p>
+        <button onclick='closestory()'>Close</button>
+        `;
+    }
+    function closestory(){
+        document.getElementById('stories').setAttribute('style', 'top:-50000px; left:-50000px;');
+    }
+  </script>
+</html>
