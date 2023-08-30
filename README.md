@@ -5,6 +5,7 @@
 
 LunaChat is an open-source messaging application that allows users to communicate with each other in a seamless and secure manner. It prioritizes privacy, ease of use, and customization, providing a user-friendly experience for all.
 
+This application is deployed on [https://yash12007.github.io/LunaChat](https://yash12007.github.io/LunaChat)
 ## Features
 
 - **Secure Messaging**: LunaChat ensures end-to-end encryption for all messages, providing a secure environment for your conversations.
