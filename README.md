@@ -23,9 +23,7 @@ This application is deployed on [https://yash12007.github.io/LunaChat](https://y
 To get started with LunaChat, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/Yash12007/LunaChat.git`
-2. Navigate to the project directory: `cd lunachat`
-3. Install dependencies: `npm install`
-4. Run the application: `npm start`
+2. Navigate to the project directory: `cd LunaChat`
 
 ## Contributing
 
