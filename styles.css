@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+body{
+    background: #000;
+    color: #fff;
+    font-family: "Dancing Script", cursive;
+    overflow: hidden;
+}
+.cursive{
+    font-family: "Dancing Script", cursive;
+}#load{
+    background-image: linear-gradient(to right, cyan, blue);
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    top: 55px;
+    left: 0;
+}#bottom{
+    background: #000;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}#bottomsec{
+    background-image: linear-gradient(to right, #0ff, #00f);
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+}#main{
+    background: #000;
+    position: absolute;
+    top: 58px;
+    left: 0;
+    right: 0;
+    bottom: 53px;
+}nav{
+    background-image: linear-gradient(to right, #000, #000);
+    border-bottom: 1px solid #fff;
+}#storypanel{
+    height: 150px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    place-items: center;
+    overflow-x: auto;
+}#storypanel button{
+    background-image: linear-gradient(to right, #0ff, #00f);
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin: 3px;
+    padding: 0;
+    background-position: center;
+    background-size: cover;
+    min-width: 80px;
+}#storypanel button img{
+    border-radius: 50%;
+}::-webkit-scrollbar{
+    background: rgb(45, 45, 45);
+    height: 5px;
+    width: 3px;
+}::-webkit-scrollbar-thumb{
+    background: cyan;
+}::-webkit-scrollbar-thumb:hover{
+    background: rgb(0, 107, 107);
+}.color_text {
+    text-shadow: 0 0 3px rgb(0, 255, 255), 0 0 5px #0000FF;
+}#posts{
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}#profile{
+    position: absolute;
+    top: -50000px;
+    left: -50000px;
+    background: #000;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}#camcapture{
+    color: #fff;
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}.post{
+    height: fit-content;
+    width: 100%;
+    min-height: 150px;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background-position: center;
+    margin-bottom: 5px;
+}
