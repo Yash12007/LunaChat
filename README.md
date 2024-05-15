@@ -1,6 +1,6 @@
 # LunaChat
 
-![License](https://img.shields.io/badge/license-GNU%20GPL%20v3.0-blue)
+![License](https://img.shields.io/badge/license-GNU%20GPL%20v2.0-blue)
 ![Created](https://img.shields.io/badge/created-August%2030%2C%202023-brightgreen)
 
 LunaChat is an open-source messaging application that allows users to communicate with each other in a seamless and secure manner. It prioritizes privacy, ease of use, and customization, providing a user-friendly experience for all.
